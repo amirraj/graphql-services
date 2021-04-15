@@ -1,0 +1,38 @@
+query getSingle($uuid : String!){
+  getArticleById(uuid:$uuid){
+         id
+         author_name
+         article_title
+         article_abstract
+         article_url
+         citation_count
+         co_authors
+         individual_id_onekey
+         uuid
+  }
+}
+
+{"uuid":"WDEM08628466"}
+
+
+{
+  getAllArticles{
+         id
+         author_name
+         article_title
+         article_abstract
+         article_url
+         citation_count
+         co_authors
+         individual_id_onekey
+         uuid
+  }
+}
+
+## raw request body
+
+{"query":"\n    query article{\n        getAllArticles{\n               id\n               author_name\n               article_title\n               article_abstract\n               article_url\n               citation_count\n               co_authors\n               individual_id_onekey\n               uuid\n        }\n      }"}
+
+
+
+{"query":"query getSingle($uuid : String!){\n        getArticleById(uuid:$uuid){\n               id\n               author_name\n               article_title\n               article_abstract\n               article_url\n               citation_count\n               co_authors\n               individual_id_onekey\n               uuid\n        }\n      }","variables":{"uuid":"WDEM00000828"}}
