@@ -1,13 +1,13 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
-const db = require('./src/config/database');
+const {ppi_db,ct_db} = require('./src/config/database');
 const root = require('./src/server/hcp-articles.resolver')
 const schema = require('./src/server/hcp-articles.schema')
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-db.authenticate()
-  .then(() => console.log('Database connected...'))
+ct_db.authenticate()
+  .then(() => console.log('CT Database connected...'))
   .catch(err => console.log('Error: ' + err))
 
 const app = express();

@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
-const db = require('../config/database')
+const {ppi_db} = require('../config/database')
 
-const HcpArticles = db.define('hcp_articles', {
+const HcpArticles = ppi_db.define('hcp_articles', {
     id: {
         allowNull: false,
         primaryKey: true,
