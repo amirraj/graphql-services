@@ -38,7 +38,11 @@ async function getLocations(args) {
 async function getHCPs(args) {
     //const locationId = args.locationId;
     try{
-        const hcp_details = await HcpProfiles.findAll();
+        const hcp_details = await HcpProfiles.findAll({
+            where:{
+                locationId:args.locationId
+            }
+        });
         return hcp_details;
     } catch (err) {
         console.log(err);

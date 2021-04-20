@@ -7,7 +7,7 @@ module.exports = buildSchema(
          getArticleById(uuid: String, oneKeyID: String) :[ Article]
          getAllTrials : [ Trial]
          getAllLocations(trialId: String) : [ Location]
-         getHCPs : [HCP]
+         getHCPs(locationId: String) : [HCP]
      }
 
      type Article {
