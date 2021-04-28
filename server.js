@@ -5,9 +5,16 @@ const root = require('./src/server/hcp-articles.resolver')
 const schema = require('./src/server/hcp-articles.schema')
 const dotenv = require('dotenv');
 const cors = require('cors');
+const DataProviderFactory = require('./src/server/DataProviderFactory');
 
-ct_db.authenticate()
-  .then(() => console.log('CT Database connected...'))
+const factory = new DataProviderFactory('postgres://postgres:Abcd1234!@localhost:5432/clinical-trials-dev');
+
+// ct_db.authenticate()
+//   .then(() => console.log('CT Database connected...'))
+//   .catch(err => console.log('Error: ' + err))
+
+factory.db.authenticate()
+  .then(() => console.log('CT Database connected using factory...'))
   .catch(err => console.log('Error: ' + err))
 
 const app = express();

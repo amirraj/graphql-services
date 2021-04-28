@@ -1,11 +1,13 @@
-class DataProviderFactory{
-    constructor(fname,lname){
-        this.firstName = fname
-        this.lastName = lname
-    }
+const { Sequelize } = require('sequelize');
+const dotenv = require('dotenv');
+dotenv.config();
 
-    getName(){
-        return 'Director ' + this.firstName + " " + this.lastName
+class DataProviderFactory{
+    constructor(connection_string){
+        this.db = new Sequelize(connection_string, {
+            host: 'localhost',
+            dialect: 'postgres'
+          });
     }
 }
 module.exports = DataProviderFactory
