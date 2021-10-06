@@ -53,7 +53,7 @@ let hcpModel = {
   },
   db_schema: {
     schema: `${process.env.GDS_SCHEMA}`,
-    tableName: "gds_hcp",
+    tableName: "hcp",
     timestamps: true,
     createdAt: "created_at",
     updatedAt: "updated_at",
