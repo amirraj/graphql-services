@@ -1,0 +1,31 @@
+## Getting all data from a table
+
+{
+  getAllGuidelines{
+         id
+         expert_id
+         onekey_id
+         name_of_the_guideline
+         country
+  }
+}
+
+
+## Getting data given expert id
+
+query getSingle($expert_id : String!){
+  getHCPById(expert_id:$expert_id){
+         id
+         expert_id
+         onekey_id
+         country
+         full_name
+  }
+}
+
+
+## Query variable
+{
+  "expert_id":"CL_00001"
+}
+

@@ -1,6 +1,6 @@
 const async = require('async');
 const _USER = require('./database_large.json');
-const db = require('./src/config/database');
+const {ct_db} = require('./src/config/database');
 const dotenv = require('dotenv');
 
 
@@ -10,8 +10,8 @@ async function init(){
     dotenv.config();
 
     async function ppiDbStructureSeeder() {
-        await db.query(`CREATE SCHEMA IF NOT EXISTS ${process.env.POSTGRES_PPI_SCHEMA}`);
-        await db.sync({ force: true });
+        await ct_db.query(`CREATE SCHEMA IF NOT EXISTS ${process.env.POSTGRES_PPI_SCHEMA}`);
+        await ct_db.sync({ force: true });
     }
 
     function ppiDbDummyDataSeeder() {
