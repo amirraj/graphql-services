@@ -44,7 +44,31 @@ const result = excelToJson({
         F: "trial_title",
       },
     },
+    {
+      name: "Guidelines",
+      columnToKey: {
+        A: "guideline_id",
+        B: "expert_id",
+        C: "onekey_id",
+        D: "expert_name",
+        E: "country",
+        F: "name_of_the_guideline",
+      },
+    },
+    {
+      name: "Publications",
+      columnToKey: {
+        A: "publication_id",
+        B: "collaborator_id",
+        C: "expert_id",
+        D: "onekey_id",
+        E: "expert_name",
+        F: "country",
+        G: "article_title",
+      },
+    },
   ],
+  
 });
 
 async function init() {
@@ -53,6 +77,8 @@ async function init() {
   const gdsHcpModel = require("./src/server/gds-hcp.model");
   const gdsConferenceModel = require("./src/server/gds-conferences.model");
   const gdsClinicalTrialsModel = require("./src/server/gds-clinical-trials.model");
+  const gdsGuidelinesModel = require("./src/server/gds-guidelines.model");
+  const gdsPublicationsModel = require("./src/server/gds-publications.model");
 
   async function gdsDbStructureSeeder() {
     await sequelize.gdsConnector.query(
@@ -92,6 +118,36 @@ async function init() {
         })
         .catch((err) => {
           console.log(err);
+        });
+    });
+
+    gdsGuidelinesModel.destroy({ truncate: { cascade: true } }).then(() => {
+      gdsGuidelinesModel
+        .bulkCreate(result["Guidelines"])
+        .then(() => {
+          console.log(`Successful Guidelines Migration.`);
+        })
+        .catch((err) => {
+          console.log("something is wrong in guidelines");
+          fs.writeFile('guidelines_error.txt', String(err), function (err) {
+            if (err) return console.log(err);
+            
+          });
+        });
+    });
+
+    gdsPublicationsModel.destroy({ truncate: { cascade: true } }).then(() => {
+      gdsPublicationsModel
+        .bulkCreate(result["Publications"])
+        .then(() => {
+          console.log(`Successful Publications Migration.`);
+        })
+        .catch((err) => {
+          console.log(`something is wrong in publications ${err}`);
+          fs.writeFile('publication_error.txt', String(err), function (err) {
+            if (err) return console.log(err);
+            
+          });
         });
     });
   }

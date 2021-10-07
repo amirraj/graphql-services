@@ -1,12 +1,12 @@
 const async = require('async');
 const _USER = require('./database_large.json');
-const db = require('./config/database');
+const db = require('./src/config/database');
 const dotenv = require('dotenv');
 
 
 async function init(){
     
-    const HcpArticlesModel = require('./hcp-articles.model.js');
+    const HcpArticlesModel = require('./src/server/hcp-articles.model.js');
     dotenv.config();
 
     async function ppiDbStructureSeeder() {
