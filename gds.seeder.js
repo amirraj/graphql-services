@@ -10,6 +10,9 @@ const result = excelToJson({
   sheets: [
     {
       name: "Basic",
+      header: {
+        rows: 1,
+      },
       columnToKey: {
         A: "expert_id",
         B: "onekey_id",
@@ -23,6 +26,9 @@ const result = excelToJson({
     },
     {
       name: "Conferences",
+      header: {
+        rows: 1,
+      },
       columnToKey: {
         A: "conference_id",
         B: "conference_title_id",
@@ -35,6 +41,9 @@ const result = excelToJson({
     },
     {
       name: "Clinical Trials",
+      header: {
+        rows: 1,
+      },
       columnToKey: {
         A: "clinical_trial_id",
         B: "expert_id",
@@ -46,6 +55,9 @@ const result = excelToJson({
     },
     {
       name: "Guidelines",
+      header: {
+        rows: 1,
+      },
       columnToKey: {
         A: "guideline_id",
         B: "expert_id",
@@ -57,6 +69,9 @@ const result = excelToJson({
     },
     {
       name: "Publications",
+      header: {
+        rows: 1,
+      },
       columnToKey: {
         A: "publication_id",
         B: "collaborator_id",
@@ -68,7 +83,6 @@ const result = excelToJson({
       },
     },
   ],
-  
 });
 
 async function init() {
@@ -129,9 +143,8 @@ async function init() {
         })
         .catch((err) => {
           console.log("something is wrong in guidelines");
-          fs.writeFile('guidelines_error.txt', String(err), function (err) {
+          fs.writeFile("guidelines_error.txt", String(err), function (err) {
             if (err) return console.log(err);
-            
           });
         });
     });
@@ -144,9 +157,8 @@ async function init() {
         })
         .catch((err) => {
           console.log(`something is wrong in publications ${err}`);
-          fs.writeFile('publication_error.txt', String(err), function (err) {
+          fs.writeFile("publication_error.txt", String(err), function (err) {
             if (err) return console.log(err);
-            
           });
         });
     });
