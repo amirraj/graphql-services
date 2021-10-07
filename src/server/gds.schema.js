@@ -3,15 +3,15 @@ const {buildSchema} = require('graphql');
 module.exports = buildSchema(
     `
      type Query {
-         getAllHCPs : [HCP]
+         getAllHCPs(limit: Int, offset: Int): [HCP]
          getHCPById(expert_id: String) :[HCP]
-         getAllConferences : [Conference]
+         getAllConferences(limit: Int, offset: Int) : [Conference]
          getConferenceById(conference_id: String) :[Conference]
-         getAllClinicalTrials : [ClinicalTrial]
+         getAllClinicalTrials(limit: Int, offset: Int) : [ClinicalTrial]
          getClinicalTrialById(clinical_trial_id: String) :[ClinicalTrial]
-         getAllGuidelines : [Guideline]
+         getAllGuidelines(limit: Int, offset: Int) : [Guideline]
          getGuidelineById(guideline_id: String) :[Guideline]
-         getAllPublications : [Publication]
+         getAllPublications(limit: Int, offset: Int) : [Publication]
          getPublicationById(publication_id: String) :[Publication]         
      }
 
@@ -66,7 +66,7 @@ module.exports = buildSchema(
         expert_id: String
         onekey_id: String
         expert_name: String
-        country: Int
+        country: String
         article_title: String
     }
     `

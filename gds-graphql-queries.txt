@@ -10,6 +10,19 @@
   }
 }
 
+## For pagination
+
+{
+  getAllPublications(limit:3,offset:1){
+         id
+         expert_id
+         onekey_id
+         article_title
+         country
+  }
+}
+
+
 
 ## Getting data given expert id
 

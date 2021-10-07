@@ -5,45 +5,60 @@ const Conference = require("./gds-conferences.model");
 const Guideline = require("./gds-guidelines.model");
 const { Op } = require("sequelize");
 
-async function getHCPs() {
+async function getHCPs(args) {
   try {
-    const hcp_details = await HCP.findAll();
+    const hcp_details = await HCP.findAll({
+        limit: args.limit,
+        offset: args.offset
+    });
     return hcp_details;
   } catch (err) {
     console.log(err);
   }
 }
 
-async function getTrials() {
+async function getTrials(args) {
   try {
-    const trial_details = await ClinicalTrial.findAll();
+    const trial_details = await ClinicalTrial.findAll({
+        limit: args.limit,
+        offset: args.offset
+    });
     return trial_details;
   } catch (err) {
     console.log(err);
   }
 }
 
-async function getGuidelines() {
+async function getGuidelines(args) {
   try {
-    const guideline_details = await Guideline.findAll();
+    const guideline_details = await Guideline.findAll({
+        limit: args.limit,
+        offset: args.offset
+    });
     return guideline_details;
   } catch (err) {
     console.log(err);
   }
 }
 
-async function getConferences() {
+async function getConferences(args) {
   try {
-    const conference_details = await Conference.findAll();
+    const conference_details = await Conference.findAll({
+        limit: args.limit,
+        offset: args.offset
+    });
     return conference_details;
   } catch (err) {
     console.log(err);
   }
 }
 
-async function getPublications() {
+async function getPublications(args) {
   try {
-    const publication_details = await Publication.findAll();
+    const publication_details = await Publication.findAll({
+        limit: args.limit,
+        offset: args.offset
+    });
     return publication_details;
   } catch (err) {
     console.log(err);
@@ -120,37 +135,6 @@ async function getPublicationById(args) {
   }
 }
 
-// async function getHCPs(args) {
-//     //const locationId = args.locationId;
-//     try{
-//         const hcp_details = await HcpProfiles.findAll({
-//             where:{
-//                 locationId:args.locationId
-//             }
-//         });
-//         return hcp_details;
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
-
-// async function getArticle(args) {
-//     const id = args.uuid? args.uuid:'';
-//     const oneKeyID = args.oneKeyID? args.oneKeyID:'';
-//     try{
-//         const article_details = await HcpArticles.findAll({
-//             where: {
-//                 [Op.or]: [
-//                 {uuid: id},
-//                 {individual_id_onekey:oneKeyID }
-//                 ]}
-//         });
-//         console.log('the result is ',article_details);
-//         return article_details;
-//     } catch (err) {
-//         console.log(err);
-//     }
-// }
 
 var root = {
   getAllHCPs: getHCPs,
