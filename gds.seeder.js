@@ -74,7 +74,7 @@ const result = excelToJson({
       },
       columnToKey: {
         A: "publication_id",
-        B: "collaborator_id",
+        B: "additional_expert_id",
         C: "expert_id",
         D: "onekey_id",
         E: "expert_name",

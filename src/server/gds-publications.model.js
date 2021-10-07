@@ -11,7 +11,7 @@ let publicationsModel = {
       unique: false,
       type: DataTypes.STRING,
     },
-    collaborator_id: {
+    additional_expert_id: {
       allowNull: true,
       unique: false,
       type: DataTypes.STRING,
@@ -57,9 +57,9 @@ let publicationsModel = {
 };
 
 const publications = sequelize.gdsConnector.define(
-    publicationsModel.name,
-    publicationsModel.db_properties,
-    publicationsModel.db_schema
+  publicationsModel.name,
+  publicationsModel.db_properties,
+  publicationsModel.db_schema
 );
 
 module.exports = publications;
