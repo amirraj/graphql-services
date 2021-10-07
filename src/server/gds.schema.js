@@ -3,7 +3,7 @@ const {buildSchema} = require('graphql');
 module.exports = buildSchema(
     `
      type Query {
-         getAllHCPs(limit: Int, offset: Int): [HCP]
+         getAllHCPs(limit: Int, offset: Int, id: String, expert_id: String, onekey_id: String, full_name: String, middle_name: String, first_name: String, last_name: String, country: String, affiliation: String): [HCP]
          getHCPById(expert_id: String) :[HCP]
          getAllConferences(limit: Int, offset: Int) : [Conference]
          getConferenceById(conference_id: String) :[Conference]

@@ -7,10 +7,33 @@ const { Op } = require("sequelize");
 
 async function getHCPs(args) {
   try {
-    const hcp_details = await HCP.findAll({
-        limit: args.limit,
-        offset: args.offset
+    let query = {};
+    let where = { where: {
+      expert_id: args.expert_id,
+      id: args.id,
+      onekey_id: args.onekey_id,
+      country: args.country,
+      full_name: args.full_name,
+      first_name: args.first_name,
+      middle_name: args.middle_name,
+      last_name: args.last_name,
+      affiliation: args.affiliation
+    }};
+
+    Object.keys(where.where).forEach((key, index) => {
+      if(where.where[key] === undefined){
+        delete where.where[key];
+      }
     });
+
+
+
+    query = (args.offset || args.limit)? {
+        ...args,
+        ...where
+      } :  where;
+
+    const hcp_details = await HCP.findAll(query);
     return hcp_details;
   } catch (err) {
     console.log(err);
