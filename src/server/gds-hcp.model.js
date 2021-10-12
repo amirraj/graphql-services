@@ -9,6 +9,7 @@ let hcpModel = {
     expert_id: {
       allowNull: false,
       unique: true,
+      primaryKey: true,
       type: DataTypes.STRING,
     },
     onekey_id: {
