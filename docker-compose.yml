@@ -2,9 +2,9 @@ version: '3'
 services:
   postgresdb:
     build: .
-    image: ctp-api-server
+    image: glpg-gds-service
     ports:
-      - 4000:4000
+      - 5000:5000
   # postgresdb:
   #   image: postgres:latest
   #   restart: always
