@@ -1,0 +1,40 @@
+version: '3'
+services:
+  postgresdb:
+    build: .
+    image: ctp-api-server
+    ports:
+      - 4000:4000
+  # postgresdb:
+  #   image: postgres:latest
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: Abcd1234!
+  #     POSTGRES_DB: postgres
+  #   ports:
+  #     - 5432:5432
+  #   volumes:
+  #     - ./postgresdb/data:/var/lib/postgresql/data
+
+  # pgadmin4:
+  #   image: dpage/pgadmin4:latest
+  #   restart: always
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: test@test.com
+  #     PGADMIN_DEFAULT_PASSWORD: test
+  #     PGADMIN_LISTEN_PORT: 8090
+  #   ports:
+  #     - 8090:8090
+  #   volumes:
+  #     - ./pgadmin/data:/var/lib/pgadmin
+  #   user: root
+
+    # sonarqube:
+    #     container_name:  sonarqube
+    #     image:  sonarqube:latest
+    #     ports:
+    #         -  "9000:9000"
+    #         -  "9092:9092"
+
+  
