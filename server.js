@@ -1,9 +1,7 @@
 const express = require("express");
-const { graphqlHTTP } = require("express-graphql");
-const { ppi_db, ct_db } = require("./src/config/database");
+const { ApolloServer, gql } = require("apollo-server-express");
+const fs = require("fs");
 const root = require("./src/server/gds.resolver");
-//const root = require('./src/server/hcp-articles.resolver')
-//const schema = require('./src/server/hcp-articles.schema')
 const schema = require("./src/server/gds.schema");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -11,26 +9,19 @@ const DataProviderFactory = require("./src/server/DataProviderFactory");
 
 const factory = new DataProviderFactory(process.env.GDS_DATABASE_URL);
 
-// ct_db.authenticate()
-//   .then(() => console.log('CT Database connected...'))
-//   .catch(err => console.log('Error: ' + err))
-
 factory.db
   .authenticate()
   .then()
   .catch((err) => console.log("Error: " + err));
 
 const app = express();
-app.get("/", (req, res) => res.send("Index"));
 app.use(cors());
-app.use(
-  "/gds",
-  graphqlHTTP({
-    schema: schema,
-    rootValue: root,
-    graphiql: true,
-  })
+const typeDefs = gql(
+  fs.readFileSync("./src/server/gds.schema.graphql", { encoding: "utf8" })
 );
+const resolvers = require("./src/server/gds.resolver-test");
+const apolloServer = new ApolloServer({ typeDefs, resolvers });
+apolloServer.applyMiddleware({ app, path: "/gds" });
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;

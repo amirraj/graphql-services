@@ -2,7 +2,6 @@ const async = require("async");
 const dotenv = require("dotenv");
 const excelToJson = require("convert-excel-to-json");
 const fs = require("fs");
-var util = require("util");
 dotenv.config();
 
 const result = excelToJson({
@@ -80,6 +79,26 @@ const result = excelToJson({
         E: "expert_name",
         F: "country",
         G: "article_title",
+      },
+    },
+  ],
+});
+
+const temp = excelToJson({
+  sourceFile: "test.xlsx",
+  sheets: [
+    {
+      name: "Sheet1",
+      header: {
+        rows: 1,
+      },
+      columnToKey: {
+        A: "clinical_trial_id",
+        B: "expert_id",
+        C: "onekey_id",
+        D: "expert_name",
+        E: "country",
+        F: "trial_title",
       },
     },
   ],
