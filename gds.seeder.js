@@ -84,7 +84,6 @@ const result = excelToJson({
   ],
 });
 
-
 async function init() {
   const sequelize = require("./src/server/sequelize");
   const gds_schema = process.env.GDS_SCHEMA;
