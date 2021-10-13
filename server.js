@@ -1,3 +1,5 @@
+require("newrelic");
+
 const express = require("express");
 const { ApolloServer, gql } = require("apollo-server-express");
 const fs = require("fs");

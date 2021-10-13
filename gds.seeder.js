@@ -84,26 +84,6 @@ const result = excelToJson({
   ],
 });
 
-const temp = excelToJson({
-  sourceFile: "test.xlsx",
-  sheets: [
-    {
-      name: "Sheet1",
-      header: {
-        rows: 1,
-      },
-      columnToKey: {
-        A: "clinical_trial_id",
-        B: "expert_id",
-        C: "onekey_id",
-        D: "expert_name",
-        E: "country",
-        F: "trial_title",
-      },
-    },
-  ],
-});
-
 async function init() {
   const sequelize = require("./src/server/sequelize");
   const gds_schema = process.env.GDS_SCHEMA;
