@@ -7,7 +7,6 @@ type Query {
 }
 
 type HCP {
-    id: ID!
     expert_id: String
     onekey_id: String
     full_name: String
