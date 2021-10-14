@@ -2,10 +2,13 @@ const async = require("async");
 const dotenv = require("dotenv");
 const excelToJson = require("convert-excel-to-json");
 const fs = require("fs");
+const latestFile = require("./fileSelector");
 dotenv.config();
 
+console.log("file to be seeded:", latestFile());
+
 const result = excelToJson({
-  sourceFile: "gds_data.xlsx",
+  sourceFile: latestFile(),
   sheets: [
     {
       name: "Basic",
