@@ -1,0 +1,12 @@
+{
+  "realm": "glpg_kol_profile",
+  "auth-server-url": "https://crdlp-dev.glpg.com:8180/auth/",
+  "ssl-required": "external",
+  "resource": "graphql-services",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "9a52685d-ddd6-470c-a81e-3103fa7e5cb9"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {}
+}

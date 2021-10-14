@@ -1,5 +1,5 @@
 type Query {
-    getHCPs(limit: Int, offset: Int, expert_id: String, onekey_id: String, full_name: String, middle_name: String, first_name: String, last_name: String, country: String, affiliation: String): [HCP]
+    getHCPs(limit: Int, offset: Int, expert_id: String, onekey_id: String, full_name: String, middle_name: String, first_name: String, last_name: String, country: String, affiliation: String): [HCP]  @auth
     getPublications: [Publication]
     getGuidelines: [Guideline]
     getConferences: [Conference]
