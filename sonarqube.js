@@ -8,7 +8,7 @@ scanner(
       'sonar.projectName': 'gds-service',
       'sonar.projectDescription': '',
       'sonar.sources': 'src',
-      'sonar.tests': 'src',
+      'sonar.tests': 'tests',
       'sonar.login':'admin', 
       'sonar.password':'admin123'
     }
