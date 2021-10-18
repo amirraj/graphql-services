@@ -28,6 +28,18 @@ axios({
   },
 })
   .then((response) => {
-    console.log(JSON.stringify(response.data.data));
+    console.log(response.status);
   })
-  .catch((err) => console.log(err));
+  .catch((err) => {
+    console.log({ ...err });
+  });
+
+// const http = require("http");
+
+// http.get({ host: "localhost", port: 5000, path: "/gds" }, (res) => {
+//   if (res.statusCode == 200) {
+//     console.log("server is running");
+//   } else {
+//     console.log("server is down:", res.statusCode);
+//   }
+// });
